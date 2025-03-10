@@ -22,7 +22,9 @@ const config = createTamagui({
 export type AppConfig = typeof config;
 
 declare module "tamagui" {
-  interface TamaguiCustomConfig extends AppConfig {}
+  interface TamaguiCustomConfig extends AppConfig {
+    readonly config: AppConfig;
+  }
 }
 
 export default config;

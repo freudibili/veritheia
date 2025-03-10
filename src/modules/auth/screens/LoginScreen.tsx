@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, Input, Stack, Text, YStack } from "tamagui";
+import { Button, Form, Input, Text, YStack } from "tamagui";
 import { useAuthStore } from "../store/auth.store";
 import { router } from "expo-router";
 
