@@ -11,9 +11,17 @@ export const useAuthStore = create<AuthState>((set) => ({
   isAuthenticated: false,
   politics: null,
   login: (credentials) => {
-    set({ isAuthenticated: true, politics: { email: credentials.email } });
+    set({
+      isAuthenticated: true,
+      politics: {
+        email: credentials.email,
+      },
+    });
   },
   logout: () => {
-    set({ isAuthenticated: false, politics: null });
+    set({
+      isAuthenticated: false,
+      politics: null,
+    });
   },
 }));

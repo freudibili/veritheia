@@ -1,45 +1,62 @@
 import React, { useState } from "react";
-import { Button, Form, Input, Text, YStack } from "tamagui";
-import { useAuthStore } from "../store/auth.store";
-import { router } from "expo-router";
+import { ScrollView } from "react-native";
+import { Text, YStack, Input, Button, Card } from "tamagui";
+import { useAuthStore } from "@/modules/auth/store/auth.store";
+import { selectLogin } from "@/modules/auth/selectors/auth.selectors";
 
 export const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const login = useAuthStore((state) => state.login);
+  const [error, setError] = useState("");
+  const login = useAuthStore(selectLogin);
 
-  const handleLogin = async () => {
-    try {
-      await login({ email, password });
-      router.replace("/(tabs)");
-    } catch (error) {
-      console.error("Login failed:", error);
+  const handleLogin = () => {
+    if (!email || !password) {
+      setError("Please enter both email and password");
+      return;
     }
+
+    // Clear any previous errors
+    setError("");
+
+    // Call the login function from the auth store
+    login({ email, password });
   };
 
   return (
-    <YStack flex={1} justifyContent="center" padding="$4" space="$4">
-      <Text fontSize="$6" fontWeight="bold" textAlign="center">
-        Welcome Back
-      </Text>
-      <Form onSubmit={handleLogin} space>
-        <Input
-          value={email}
-          onChangeText={setEmail}
-          placeholder="Email"
-          autoCapitalize="none"
-          keyboardType="email-address"
-        />
-        <Input
-          value={password}
-          onChangeText={setPassword}
-          placeholder="Password"
-          secureTextEntry
-        />
-        <Button onPress={handleLogin} theme="active">
-          Login
-        </Button>
-      </Form>
-    </YStack>
+    <ScrollView>
+      <YStack padding={16} space={16} justifyContent="center" height="100%">
+        <Card padding={16}>
+          <YStack space={16}>
+            <Text fontSize={24} fontWeight="bold" textAlign="center">
+              Login
+            </Text>
+
+            {error ? (
+              <Text color="$red10" textAlign="center">
+                {error}
+              </Text>
+            ) : null}
+
+            <Input
+              placeholder="Email"
+              value={email}
+              onChangeText={setEmail}
+              autoCapitalize="none"
+              keyboardType="email-address"
+            />
+
+            <Input
+              placeholder="Password"
+              value={password}
+              onChangeText={setPassword}
+              secureTextEntry
+            />
+
+            <Button onPress={handleLogin}>Login</Button>
+          </YStack>
+        </Card>
+      </YStack>
+    </ScrollView>
   );
 };

@@ -1,8 +1,12 @@
 import { Tabs } from "expo-router";
 import React from "react";
 import { Home, User } from "@tamagui/lucide-icons";
+import { useAuthStore } from "@/modules/auth/store/auth.store";
+import { selectIsAuthenticated } from "@/modules/auth/selectors/auth.selectors";
 
 export default function TabsLayout() {
+  const isAuthenticated = useAuthStore(selectIsAuthenticated);
+
   return (
     <Tabs
       screenOptions={{
@@ -19,7 +23,7 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="profile"
         options={{
-          title: "User Profile",
+          title: isAuthenticated ? "Profile" : "Login",
           tabBarIcon: ({ color }) => <User color={color} />,
         }}
       />
