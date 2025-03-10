@@ -4,7 +4,11 @@ import { Home, User } from "@tamagui/lucide-icons";
 
 export default function TabsLayout() {
   return (
-    <Tabs>
+    <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: "#2196F3",
+      }}
+    >
       <Tabs.Screen
         name="home"
         options={{
@@ -15,7 +19,7 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="profile"
         options={{
-          title: "Profile",
+          title: "User Profile",
           tabBarIcon: ({ color }) => <User color={color} />,
         }}
       />

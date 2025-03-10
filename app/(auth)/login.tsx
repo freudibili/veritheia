@@ -1,5 +1,5 @@
 import React from "react";
-import { LoginScreen } from "../../src/modules/auth/screens/LoginScreen";
+import { LoginScreen } from "@/modules/auth/screens/LoginScreen";
 
 export default function LoginPage() {
   return <LoginScreen />;
