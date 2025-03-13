@@ -23,9 +23,9 @@ export const LoginScreen = () => {
 
   return (
     <ScrollView>
-      <YStack padding={16} space={16} justifyContent="center" height="100%">
+      <YStack padding={16} gap={16} justifyContent="center" height="100%">
         <Card padding={16}>
-          <YStack space={16}>
+          <YStack gap={16}>
             <Text fontSize={24} fontWeight="bold" textAlign="center">
               Login
             </Text>
