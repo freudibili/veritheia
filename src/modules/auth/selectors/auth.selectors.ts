@@ -1,6 +1,5 @@
 import { useAuthStore } from "../store/auth.store";
 
-// Authentication selectors
 export const selectIsAuthenticated = (
   state: ReturnType<typeof useAuthStore.getState>
 ) => state.isAuthenticated;

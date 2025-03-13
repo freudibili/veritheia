@@ -16,10 +16,8 @@ export const LoginScreen = () => {
       return;
     }
 
-    // Clear any previous errors
     setError("");
 
-    // Call the login function from the auth store
     login({ email, password });
   };
 

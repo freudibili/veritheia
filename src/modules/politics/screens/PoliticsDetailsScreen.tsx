@@ -9,7 +9,6 @@ interface PoliticsDetailsScreenProps {
 export const PoliticsDetailsScreen = ({
   politicsId,
 }: PoliticsDetailsScreenProps) => {
-  // In a real app, you would fetch politics details based on politicsId
   const politics = {
     id: politicsId,
     name: `Politician ${politicsId}`,
