@@ -1,4 +1,4 @@
-# factoPol
+# Veritheia
 
 A modular React Native application built with Expo, Expo Router, Tamagui, and Zustand.
 
