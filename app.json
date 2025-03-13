@@ -1,5 +1,9 @@
 {
   "plugins": [
     "expo-router"
-  ]
+  ],
+  "jsEngine": "hermes",
+  "ios": {
+    "bundleIdentifier": "com.anonymous.veritheia"
+  }
 }
