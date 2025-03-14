@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView } from "react-native";
 import { Text, YStack, Spinner, XStack } from "tamagui";
-import { usePoliticsStore } from "@/modules/politics/store/politicsStore";
-import { PoliticsCard } from "@/modules/politics/components/PoliticsCard";
-import { PaginationControls } from "@/modules/politics/components/PaginationControls";
-import { PoliticsTabs } from "@/modules/politics/components/PoliticsTabs";
-import { usePoliticsFilters } from "@/modules/politics/hooks/usePoliticsFilters";
-import { usePagination } from "@/modules/politics/hooks/usePagination";
+import { usePoliticsStore } from "@/politics/store/politicsStore";
+import { PoliticsCard } from "@/politics/components/PoliticsCard";
+import { PaginationControls } from "@/politics/components/PaginationControls";
+import { PoliticsTabs } from "@/politics/components/PoliticsTabs";
+import { usePoliticsFilters } from "@/politics/hooks/usePoliticsFilters";
+import { usePagination } from "@/politics/hooks/usePagination";
 import { useRouter } from "expo-router";
 
-export const HomeScreen = () => {
+export const PoliticsScreen = () => {
   const { actors, loading, error, fetchActors } = usePoliticsStore();
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("all");

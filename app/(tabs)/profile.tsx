@@ -1,9 +1,8 @@
+import { LoginScreen } from "@/auth/screens/LoginScreen";
+import { selectIsAuthenticated } from "@/auth/selectors/auth.selectors";
+import { useAuthStore } from "@/auth/store/auth.store";
+import { ProfileScreen } from "@/user/ProfileScreen";
 import React from "react";
-
-import { LoginScreen } from "@/modules/auth/screens/LoginScreen";
-import { useAuthStore } from "@/modules/auth/store/auth.store";
-import { selectIsAuthenticated } from "@/modules/auth/selectors/auth.selectors";
-import { ProfileScreen } from "@/modules/user/ProfileScreen";
 
 export default function ProfilePage() {
   const isAuthenticated = useAuthStore(selectIsAuthenticated);

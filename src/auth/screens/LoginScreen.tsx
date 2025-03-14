@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { ScrollView } from "react-native";
 import { Text, YStack, Input, Button, Card } from "tamagui";
-import { useAuthStore } from "@/modules/auth/store/auth.store";
-import { selectLogin } from "@/modules/auth/selectors/auth.selectors";
+import { useAuthStore } from "@/auth/store/auth.store";
+import { selectLogin } from "@/auth/selectors/auth.selectors";
 
 export const LoginScreen = () => {
   const [email, setEmail] = useState("");

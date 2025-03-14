@@ -1,4 +1,4 @@
-import { useAuthStore } from "@/modules/auth/store/auth.store";
+import { useAuthStore } from "@/auth/store/auth.store";
 
 export const selectPoliticsProfile = (
   state: ReturnType<typeof useAuthStore.getState>
