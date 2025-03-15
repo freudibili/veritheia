@@ -1,9 +1,5 @@
 import { useAuthStore } from "@/auth/store/auth.store";
 
-export const selectPoliticsProfile = (
+export const selectPolitics = (
   state: ReturnType<typeof useAuthStore.getState>
 ) => state.politics;
-
-export const selectPoliticsEmail = (
-  state: ReturnType<typeof useAuthStore.getState>
-) => state.politics?.email;

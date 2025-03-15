@@ -8,9 +8,9 @@ export const ProfileScreen = () => {
 
   return (
     <ScrollView>
-      <YStack padding={16} space={16}>
+      <YStack padding={16} gap={16}>
         <Card padding={16}>
-          <YStack space={8} alignItems="center">
+          <YStack gap={8} alignItems="center">
             <Avatar circular size="$6">
               <Avatar.Fallback backgroundColor="$blue10" />
             </Avatar>
@@ -22,14 +22,14 @@ export const ProfileScreen = () => {
         </Card>
 
         <Card padding={16}>
-          <YStack space={8}>
+          <YStack gap={8}>
             <Text fontWeight="bold">Political Preferences</Text>
             <Text>You haven&apos;t set any political preferences yet.</Text>
           </YStack>
         </Card>
 
         <Card padding={16}>
-          <YStack space={8}>
+          <YStack gap={8}>
             <Text fontWeight="bold">Saved Politicians</Text>
             <Text>You haven&apos;t saved any politicians yet.</Text>
           </YStack>

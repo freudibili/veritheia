@@ -7,16 +7,16 @@ const politicsApi = {
   getActors: async (): Promise<Actor[]> => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 300));
-      return [actors[0]];
+      return actors;
     } catch {
       throw new Error("Failed to fetch actor data");
     }
   },
 
-  getAllActors: async (): Promise<Actor[]> => {
+  getActor: async (id: string): Promise<Actor> => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 300));
-      return actors;
+      return actors.find((actor) => actor.uid["#text"] === id) as Actor;
     } catch {
       throw new Error("Failed to fetch all actors");
     }

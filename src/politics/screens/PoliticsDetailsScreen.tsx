@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ScrollView } from "react-native";
-import { Text, Avatar, YStack, XStack, Card } from "tamagui";
+import { Text, Avatar, YStack, XStack, Card, Spinner } from "tamagui";
+import { usePoliticsStore } from "../store/politicsStore";
 
 interface PoliticsDetailsScreenProps {
   politicsId: string;
@@ -9,48 +10,57 @@ interface PoliticsDetailsScreenProps {
 export const PoliticsDetailsScreen = ({
   politicsId,
 }: PoliticsDetailsScreenProps) => {
-  const politics = {
-    id: politicsId,
-    name: `Politician ${politicsId}`,
-    email: `politician${politicsId}@example.com`,
-    avatar: `https://i.pravatar.cc/300?u=${politicsId}`,
-    party: "Democratic Party",
-    position: "Senator",
-    state: "California",
-  };
+  const { actor, loading, error, fetchActor } = usePoliticsStore();
+
+  useEffect(() => {
+    fetchActor(politicsId);
+  }, [fetchActor, politicsId]);
+
+  if (loading) {
+    return (
+      <YStack flex={1} justifyContent="center" alignItems="center">
+        <Spinner size="large" />
+      </YStack>
+    );
+  }
+
+  if (error || !actor) {
+    return (
+      <YStack flex={1} justifyContent="center" alignItems="center" padding={16}>
+        <Text color="$red10" textAlign="center">
+          Error: {error}
+        </Text>
+      </YStack>
+    );
+  }
 
   return (
     <ScrollView>
-      <YStack padding={16} space={16}>
-        <XStack space={16} alignItems="center">
+      <YStack padding={16} gap={16}>
+        <XStack gap={16} alignItems="center">
           <Avatar circular size="$6">
-            <Avatar.Image source={{ uri: politics.avatar }} />
+            <Avatar.Image source={{ uri: "" }} />
             <Avatar.Fallback backgroundColor="$blue10" />
           </Avatar>
           <YStack>
             <Text fontSize={24} fontWeight="bold">
-              {politics.name}
+              {actor.etatCivil.ident.prenom}
             </Text>
             <Text fontSize={16} color="$gray10">
-              {politics.email}
+              {actor.etatCivil.ident.nom}
             </Text>
           </YStack>
         </XStack>
 
         <Card padding={16}>
-          <YStack space={8}>
-            <Text fontWeight="bold">Party</Text>
-            <Text>{politics.party}</Text>
+          <YStack gap={8}>
+            <Text fontWeight="bold">Profession</Text>
+            <Text>{actor.profession?.libelleCourant}</Text>
 
             <Text fontWeight="bold" marginTop={8}>
-              Position
+              Date de naissance
             </Text>
-            <Text>{politics.position}</Text>
-
-            <Text fontWeight="bold" marginTop={8}>
-              State
-            </Text>
-            <Text>{politics.state}</Text>
+            <Text>{actor.etatCivil.infoNaissance.dateNais}</Text>
           </YStack>
         </Card>
       </YStack>
